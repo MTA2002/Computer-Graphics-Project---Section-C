@@ -31,15 +31,15 @@ void drawPlanet(float distance, float angle, float radius) {
     glRotatef(angle, 0.0, 1.0, 0.0);
     glTranslatef(distance * zoomFactor, 0.0, 0.0);
 
-    // Set color based on the planet
+
     if (distance == distanceMercury) {
-        glColor3f(0.6, 0.6, 0.6); // Gray color for Mercury
+        glColor3f(0.6, 0.6, 0.6); 
     } else if (distance == distanceVenus) {
-        glColor3f(0.8, 0.5, 0.2); // Orange color for Venus
+        glColor3f(0.8, 0.5, 0.2); 
     } else if (distance == distanceEarth) {
-        glColor3f(0.0, 0.4, 0.8); // Blue color for Earth
+        glColor3f(0.0, 0.4, 0.8); 
     } else if (distance == distanceMars) {
-        glColor3f(0.8, 0.2, 0.0); // Red color for Mars
+        glColor3f(0.8, 0.2, 0.0);
     }
 
     glutSolidSphere(radius, 20, 20);
@@ -57,14 +57,13 @@ void drawStars() {
 }
 
 void calculateCometPath(float time, float& x, float& y, float& z) {
-    // Define parametric equations for x, y, and z based on time
     x = 5.0 * cos(0.5 * time);
     y = 2.0 * sin(0.8 * time);
     z = 5.0 * sin(0.5 * time);
 }
 
 void drawComet() {
-    float cometTime = glutGet(GLUT_ELAPSED_TIME) / 1000.0;  // Get elapsed time in seconds
+    float cometTime = glutGet(GLUT_ELAPSED_TIME) / 1000.0;  
 
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_LINES);
@@ -76,7 +75,6 @@ void drawComet() {
     glVertex3f(newX, newY, newZ);
     glEnd();
 
-    // Update comet's position
     cometX = newX;
     cometY = newY;
     cometZ = newZ;
@@ -145,7 +143,6 @@ void update(int value) {
     if (angleMars > 360) angleMars -= 360;
 
     if (rand() % 30 == 0) {
-        // Trigger a comet shower randomly
         cometShowerActive = true;
     }
 
@@ -162,7 +159,6 @@ void specialKeys(int key, int x, int y) {
             zoomFactor += 1;
             break;
         case GLUT_KEY_LEFT:
-            // Add rotation or other user interaction for left arrow key
             angleMercury -= 5.0;
             angleVenus -= 5.0;
             angleEarth -= 5.0;
